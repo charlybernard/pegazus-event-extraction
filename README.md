@@ -42,19 +42,6 @@ Format JSON indiquant les entités et les relations :
 }
 ```
 
-#### Utilisation
-
-##### Conversion de la vérité terrain (ground truth) vers JSON
-
-Pour générer les fichiers JSONL à partir de `ground_truth.csv`, il faut exécuter le script `main.py`.
-
-Cela produira deux fichiers :
-
-- `complex_ground_truth.jsonl` — une version **complexe** de la vérité terrain
-- `simple_ground_truth.jsonl` — une version **simple** de la vérité terrain
-
-Assurez-vous que le fichier `ground_truth.csv` est bien présent dans le répertoire attendu avant d’exécuter le script.
-
 👉 Voir [ground_truth_conversion.md](doc/ground_truth_conversion.md) pour plus de détails sur la conversion.
 
 ---
@@ -129,6 +116,38 @@ Les données converties sont réparties en trois ensembles :
 - `bert/` : entraînement et inférence avec BERT
 - `utils/` : scripts utilitaires (prétraitement, conversion, etc.)
 - `doc/` : documentation détaillée
+
+---
+
+## Utilisation
+
+### Conversion de la vérité terrain (ground truth) vers JSON
+
+Pour générer les fichiers JSONL à partir de `ground_truth.csv`, il faut exécuter le script `prepare_dataset.py`.
+
+Cela produira deux fichiers de descriptions d'événements :
+
+- `complex_ground_truth.jsonl` — une version **complexe** de la vérité terrain  
+- `simple_ground_truth.jsonl` — une version **simple** de la vérité terrain
+
+Chaque fichier est ensuite automatiquement **divisé** en trois sous-ensembles :
+
+- `*_train.jsonl` — pour l'**entraînement**
+- `*_val.jsonl` — pour la **validation**
+- `*_test.jsonl` — pour les **tests**
+
+Les fichiers divisés sont enregistrés dans le dossier `splits`.
+
+> **Remarque :** Assurez-vous que le fichier `ground_truth.csv` est bien présent dans le répertoire attendu avant d’exécuter le script.
+
+---
+
+#### 📊 Schéma du pipeline de préparation des données
+
+| Étape | Entrée | Traitement | Sorties |
+|------|--------|------------|---------|
+| 1️⃣ | `ground_truth.csv` | Génération des descriptions d'événements | `simple_ground_truth.jsonl`<br>`complex_ground_truth.jsonl` |
+| 2️⃣ | JSONL générés | Découpage selon un ratio (ex. 80/10/10) | `simple_ground_truth_train.jsonl`<br>`simple_ground_truth_val.jsonl`<br>`simple_ground_truth_test.jsonl`<br>`complex_ground_truth_train.jsonl`<br>`complex_ground_truth_val.jsonl`<br>`complex_ground_truth_test.jsonl` |
 
 ---
 
