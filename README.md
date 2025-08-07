@@ -42,6 +42,19 @@ Format JSON indiquant les entités et les relations :
 }
 ```
 
+#### Utilisation
+
+##### Conversion de la vérité terrain (ground truth) vers JSON
+
+Pour générer les fichiers JSONL à partir de `ground_truth.csv`, il faut exécuter le script `main.py`.
+
+Cela produira deux fichiers :
+
+- `complex_ground_truth.jsonl` — une version **complexe** de la vérité terrain
+- `simple_ground_truth.jsonl` — une version **simple** de la vérité terrain
+
+Assurez-vous que le fichier `ground_truth.csv` est bien présent dans le répertoire attendu avant d’exécuter le script.
+
 👉 Voir [ground_truth_conversion.md](doc/ground_truth_conversion.md) pour plus de détails sur la conversion.
 
 ---
