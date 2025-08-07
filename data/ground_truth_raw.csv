@@ -1,4 +1,4 @@
-validated	event	event_label	time	line_id	landmark_label	landmark_type	relatum_label	relatum_type	relation_type	change_type	change_on	attribute_type	outdates	makes_effective
+validated	event_id	event_label	time	line_id	landmark_label	landmark_type	relatum_label	relatum_type	relation_type	change_type	change_on	attribute_type	outdates	makes_effective
 A	13	boulevard de courcelles || Ouverture || Ordonnance du Bureau des finances du 16 janvier 1789	1789-01-16	10063_ouverture	Boulevard de Courcelles	boulevard				transition	attribute	geometry
 A	49	rue de dreux || Historique || Précédemment, partie de la rue de Chartres		10343_historique_5	Rue de Chartres	rue				transition	attribute	geometry
 A	96	rue eugène oudiné || Historique || Précédemment, rue Watt prolongée		10605_historique	Rue Eugène Oudiné	rue				transition	attribute	name	rue Watt prolongée	rue de Rigny
@@ -1085,4 +1085,4 @@ X	placette jacques duhamel || Historique || anciennement partie du quai de Monte
 	976	rue de la clef || Historique || L'ancienne rue Vieille Notre-Dame, entre les rues Censier et Daubenton, s'est appelée successivement rue de la Clef, rue du Pont aux Biches, rue Vieille Notre-Dame		9907_historique_2	Rue de la Clef	rue
 	977	rue de la clef || Historique || L'ancienne rue du Pont aux Biches ou Pont aux Biches Saint-Marcel, entre les rues du Fer à Moulin et Censier, s'est appelée rue de la Miséricorde puis rue Vieille Notre-Dame		9907_historique_3	Rue de la Clef	rue
 	978	rue de la clef || Historique || L'ancienne rue de la Clef ou Clé, entre les rues Daubenton et Lacépède, existait au milieu du XVIe siècle		9907_historique_4	Rue de la Clef	rue
-	1958	boulevard de la villette || Historique || Le terre-plein central est occupé par le viaduc du Métropolitain entre la place du Colonel Fabien et la rue d'Aubervilliers.		14076_historique_6										
+	1958	boulevard de la villette || Historique || Le terre-plein central est occupé par le viaduc du Métropolitain entre la place du Colonel Fabien et la rue d'Aubervilliers.		14076_historique_6

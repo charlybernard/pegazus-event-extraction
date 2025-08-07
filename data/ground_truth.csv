@@ -1,4 +1,4 @@
-event	event_label	time	line_id	landmark_label	landmark_type	relatum_label	relatum_type	relation_type	change_type	change_on	attribute_type	outdates	makes_effective
+event_id	event_label	time	line_id	landmark_label	landmark_type	relatum_label	relatum_type	relation_type	change_type	change_on	attribute_type	outdates	makes_effective
 13	boulevard de courcelles || Ouverture || Ordonnance du Bureau des finances du 16 janvier 1789	1789-01-16	10063_ouverture	Boulevard de Courcelles	boulevard				transition	attribute	geometry
 49	rue de dreux || Historique || Précédemment, partie de la rue de Chartres		10343_historique_5	Rue de Chartres	rue				transition	attribute	geometry
 96	rue eugène oudiné || Historique || Précédemment, rue Watt prolongée		10605_historique	Rue Eugène Oudiné	rue				transition	attribute	name	rue Watt prolongée	rue de Rigny
@@ -958,4 +958,4 @@ event	event_label	time	line_id	landmark_label	landmark_type	relatum_label	relatu
 10555	rue dareau || Classement || Précédemment voie des communes de Gentilly et de Montrouge		10158_classement_2	Rue Dareau	rue	Montrouge	municipality	within	classement	landmark
 placette jacques duhamel || Historique || anciennement partie du quai de Montebello et quai de la Tournelle			15138_historique	Placette Jacques Duhamel	place				transition	attribute	geometry
 placette jacques duhamel || Historique || anciennement partie du quai de Montebello et quai de la Tournelle			15138_historique	Quai de Montebello	quai				transition	attribute	geometry
-placette jacques duhamel || Historique || anciennement partie du quai de Montebello et quai de la Tournelle			15138_historique	Quai de la Tournelle	quai				transition	attribute	geometry		
+placette jacques duhamel || Historique || anciennement partie du quai de Montebello et quai de la Tournelle			15138_historique	Quai de la Tournelle	quai				transition	attribute	geometry
