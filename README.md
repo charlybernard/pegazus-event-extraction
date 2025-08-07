@@ -1,6 +1,6 @@
 # 🦄 Pegazus Event Extraction
 
-Pipeline complet pour l'extraction d'événements à partir de descriptions textuelles, avec génération de triplets relationnels à partir de phrases.
+Pipeline complet pour l'extraction d’événements à partir de descriptions textuelles, avec génération de triplets relationnels à partir de phrases.
 
 ---
 
@@ -48,7 +48,7 @@ Format JSON indiquant les entités et les relations :
 
 ### 3. 📂 Répartition des données
 
-Les données converties sont réparties en trois ensembles :
+Les données convertées sont réparties en trois ensembles :
 - **Entraînement**
 - **Validation**
 - **Test**
@@ -112,8 +112,6 @@ Les données converties sont réparties en trois ensembles :
 ## 📁 Structure du dépôt
 
 - `data/` : fichiers CSV et JSON de travail
-- `llm/` : gestion des prompts et inférence LLM
-- `bert/` : entraînement et inférence avec BERT
 - `utils/` : scripts utilitaires (prétraitement, conversion, etc.)
 - `doc/` : documentation détaillée
 
@@ -125,18 +123,31 @@ Les données converties sont réparties en trois ensembles :
 
 Pour générer les fichiers JSONL à partir de `ground_truth.csv`, il faut exécuter le script `prepare_dataset.py`.
 
-Cela produira deux fichiers de descriptions d'événements :
+Cela produit trois fichiers de descriptions d'événements :
 
 - `complex_ground_truth.jsonl` — une version **complexe** de la vérité terrain  
 - `simple_ground_truth.jsonl` — une version **simple** de la vérité terrain
+- `bert_simple_ground_truth.jsonl` — une version **simple** de la vérité terrain pour BERT
 
-Chaque fichier est ensuite automatiquement **divisé** en trois sous-ensembles :
+La **deuxième version "simple enrichie"** est ensuite automatiquement générée à partir du fichier simple :
+
+- Les dates au format ISO (`YYYY`, `YYYY-MM`, `YYYY-MM-DD`) sont converties en **langage naturel français**  
+  _Exemples :_  
+  `1909-01-03` → `3 janvier 1909`  
+  `2023-09` → `septembre 2023`
+
+- Certains triplets sont **modifiés** ou **supprimés** :
+  - Les triplets avec `rel: "isLandmarkType"` sont transformés en inversant `sub` et `obj`, et `rel` devient `isLandmarkTypeOf`
+  - Les triplets avec `rel: "hasTime"` et `obj: "noTime"` sont supprimés
+  - Les triplets avec `rel: "hasNewName"` ou `"hasOldName"` dont le sujet est identique à l'objet (sans tenir compte de la casse) sont supprimés
+
+Chaque fichier JSONL est ensuite automatiquement **divisé** en trois sous-ensembles :
 
 - `*_train.jsonl` — pour l'**entraînement**
 - `*_val.jsonl` — pour la **validation**
 - `*_test.jsonl` — pour les **tests**
 
-Les fichiers divisés sont enregistrés dans le dossier `splits`.
+Les fichiers divisés sont enregistrés dans le dossier `data`.
 
 > **Remarque :** Assurez-vous que le fichier `ground_truth.csv` est bien présent dans le répertoire attendu avant d’exécuter le script.
 
@@ -144,10 +155,10 @@ Les fichiers divisés sont enregistrés dans le dossier `splits`.
 
 #### 📊 Schéma du pipeline de préparation des données
 
-| Étape | Entrée | Traitement | Sorties |
-|------|--------|------------|---------|
-| 1️⃣ | `ground_truth.csv` | Génération des descriptions d'événements | `simple_ground_truth.jsonl`<br>`complex_ground_truth.jsonl` |
-| 2️⃣ | JSONL générés | Découpage selon un ratio (ex. 80/10/10) | `simple_ground_truth_train.jsonl`<br>`simple_ground_truth_val.jsonl`<br>`simple_ground_truth_test.jsonl`<br>`complex_ground_truth_train.jsonl`<br>`complex_ground_truth_val.jsonl`<br>`complex_ground_truth_test.jsonl` |
+| Étape | Entrée                    | Traitement                                                                 | Sorties                                                    |
+|-------|---------------------------|----------------------------------------------------------------------------|-------------------------------------------------------------|
+| 1️⃣    | `ground_truth.csv`        | Génération des descriptions d'événements (simple et complexe)              | `complex_ground_truth.jsonl`<br>`simple_ground_truth.jsonl`<br>`bert_simple_ground_truth.jsonl`|
+| 2️⃣    | Fichiers JSONL            | Découpage en train / val / test                                           | Fichiers `*_train.jsonl`, `*_val.jsonl`, `*_test.jsonl` dans `data/` |
 
 ---
 
@@ -156,5 +167,3 @@ Les fichiers divisés sont enregistrés dans le dossier `splits`.
 - [ ] Ajouter pipeline de post-traitement pour les erreurs LLM
 - [ ] Ajouter visualisation interactive des triplets extraits
 - [ ] Publier benchmark complet sur différents modèles
-
----
