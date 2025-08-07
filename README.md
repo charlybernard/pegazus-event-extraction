@@ -42,7 +42,7 @@ Format JSON indiquant les entités et les relations :
 }
 ```
 
-👉 Voir [docs/ground_truth_conversion.md](docs/ground_truth_conversion.md) pour plus de détails sur la conversion.
+👉 Voir [ground_truth_conversion.md](doc/ground_truth_conversion.md) pour plus de détails sur la conversion.
 
 ---
 
@@ -115,7 +115,7 @@ Les données converties sont réparties en trois ensembles :
 - `llm/` : gestion des prompts et inférence LLM
 - `bert/` : entraînement et inférence avec BERT
 - `utils/` : scripts utilitaires (prétraitement, conversion, etc.)
-- `docs/` : documentation détaillée (`ground_truth_conversion.md`)
+- `doc/` : documentation détaillée
 
 ---
 
