@@ -115,5 +115,3 @@ deduplicate_dicts(triples, keys=("sub", "rel", "obj"))
 ```
 
 ---
-
-© 2025 – Documentation générée automatiquement.
